@@ -15,7 +15,6 @@ import RafflePage from './pages/Sorteo';
 const AppContainer = styled.div`
   background-color: ${(props) => props.theme.background};
   color: ${(props) => props.theme.color};
-  transition: all .3s;
   min-height: calc(100vh - 58px);
    @media (max-width: 768px) {
     min-height: calc(100vh - 48px);
