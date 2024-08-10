@@ -19,10 +19,6 @@ const PageContainer = styled.div`
   background-color: ${(props) => props.theme.background}; /* Asegúrate de definir este color en tu tema */
 `;
 
-const PageTitle = styled.h1`
-  font-size: 2.5rem;
-  color: ${(props) => props.theme.primary}; /* Asegúrate de definir este color en tu tema */
-  margin-bottom: 1.5rem;
-`;
+
 
 export default Donations;
