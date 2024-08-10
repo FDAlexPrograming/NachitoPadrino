@@ -1,13 +1,92 @@
+/* src/index.css */
 body {
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1rem; /* Tamaño base de la fuente */
+  transition: color 3s;
+  position: relative;
+  background-blend-mode: exclusion;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+/* Utiliza unidades relativas para fuentes */
+h1 {
+  font-size: calc(1.5rem + 1vw); /* Ajusta según el ancho de la ventana */
+}
+
+h2 {
+  font-size: calc(1.25rem + 0.75vw);
+}
+
+h3 {
+  font-size: calc(1.125rem + 0.5vw);
+}
+
+h4 {
+  font-size: calc(1rem + 0.25vw);
+}
+
+p {
+  font-size: calc(0.875rem + 0.25vw);
+}
+
+/* Asegúrate de que el texto no se desborde */
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Media queries para ajustar el tamaño de fuente en pantallas pequeñas */
+@media (max-width: 768px) {
+  body {
+    font-size: 0.875rem; /* Ajuste de tamaño base */
+  }
+
+  h1 {
+    font-size: calc(1.25rem + 1vw);
+  }
+
+  h2 {
+    font-size: calc(1rem + 0.75vw);
+  }
+
+  h3 {
+    font-size: calc(0.875rem + 0.5vw);
+  }
+
+  h4 {
+    font-size: calc(0.75rem + 0.25vw);
+  }
+
+  p {
+    font-size: calc(0.75rem + 0.25vw);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 0.75rem; /* Ajuste de tamaño base */
+  }
+
+  h1 {
+    font-size: calc(1rem + 1vw);
+  }
+
+  h2 {
+    font-size: calc(0.875rem + 0.75vw);
+  }
+
+  h3 {
+    font-size: calc(0.75rem + 0.5vw);
+  }
+
+  h4 {
+    font-size: calc(0.625rem + 0.25vw);
+  }
+
+  p {
+    font-size: calc(0.625rem + 0.25vw);
+  }
 }
