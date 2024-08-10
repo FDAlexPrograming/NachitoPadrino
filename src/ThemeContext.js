@@ -1,6 +1,6 @@
 // src/ThemeContext.js
 import React, { createContext, useState, useContext } from 'react';
-import { ThemeProvider as StyledThemeProvider, createGlobalStyle, keyframes } from 'styled-components';
+import { ThemeProvider as StyledThemeProvider, createGlobalStyle } from 'styled-components';
 
 const ThemeContext = createContext();
 
