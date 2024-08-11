@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Gallery from './components/Gallery';
 import Home from './pages/Home';
-import About from './pages/About';
+import Pacifico from './pages/Pacifico';
 import Donations from './pages/Donations';
 import { ThemeProvider as ThemeContextProvider } from './ThemeContext';
 import styled from 'styled-components';
@@ -30,10 +30,10 @@ const App = () => {
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
               <Route path="/donations" element={<Donations />} />
-              <Route path="/sorteo" element={<RafflePage />} />
-              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/novedades" element={<RafflePage />} />
+              <Route path="/apadrinados" element={<Gallery />} />
+              <Route path="/pacifico_felino" element={<Pacifico />} />
             </Routes>
           </main>
           <Footer />

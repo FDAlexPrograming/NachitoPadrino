@@ -1,6 +1,5 @@
-// src/components/Navbar.js
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useLocation, NavLink } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import { useTheme } from '../ThemeContext';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
@@ -11,13 +10,14 @@ import images from '../assets';
 const Navbar = () => {
   const { toggleTheme } = useTheme();
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   const handleMenuToggle = () => {
     setMenuOpen(prevState => !prevState);
   };
 
   return (
-    <Nav>
+    <Nav isPacifico={location.pathname === '/pacifico_felino'}>
       <Logo to="/">
         <BorderWrapper>
           <img src={images.nachito_logo} alt="Cat Logo" />
@@ -25,14 +25,14 @@ const Navbar = () => {
       </Logo>
     
       <NavLinks open={isMenuOpen}>
-        <CloseButton onClick={() => setMenuOpen(false)}>
+      <CloseButton onClick={() => setMenuOpen(false)}>
           <CloseIcon />
         </CloseButton>
         <NavLink to="/" onClick={() => setMenuOpen(false)}>Inicio</NavLink>
-        <NavLink to="/about" onClick={() => setMenuOpen(false)}>Sobre Nosotros</NavLink>
         <NavLink to="/donations" onClick={() => setMenuOpen(false)}>Donaciones</NavLink>
-        <NavLink to="/sorteo" onClick={() => setMenuOpen(false)}>Sorteo</NavLink>
-        <NavLink to="/gallery" onClick={() => setMenuOpen(false)}>Galeria</NavLink>
+        <NavLink to="/novedades" onClick={() => setMenuOpen(false)}>Novedades</NavLink>
+        <NavLink to="/apadrinados" onClick={() => setMenuOpen(false)}>Apadrinados</NavLink>
+        <NavLink to="/pacifico_felino" onClick={() => setMenuOpen(false)} className="pacifico-link">Pacífico Felino</NavLink>
         <SocialIcons>
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
             <InstagramIcon />
@@ -82,9 +82,11 @@ const Nav = styled.nav`
   align-items: center;
   position: sticky;
   top: 0;
-  backdrop-filter: blur(25px);
+  backdrop-filter: blur(10px);
   z-index: 100;
   border-bottom: 1px solid ${(props) => props.theme.color};
+  background-color: ${(props) => 
+    props.isPacifico ? '#B1C8AC59' : '#F8CA2159'};
 `;
 
 const Logo = styled(NavLink)`
@@ -95,15 +97,11 @@ const Logo = styled(NavLink)`
 
 const BorderWrapper = styled.div`
   position: relative;
-  width: 70px; 
-  height: 70px; 
+  width: 80px; 
+  height: 80px; 
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid ${(props) => props.theme.secondary};
-  border-radius: 50%;
-  background-color: #e9dbb6;
-
   img {
     width: 100%;
     height: 100%;
@@ -121,6 +119,11 @@ const NavLinks = styled.div`
     text-decoration: none;
     font-weight: bold;
     margin-right: 1rem;
+
+    
+    &.pacifico-link:hover {
+      color: green; 
+    }
 
     @media (max-width: 768px) {
       color: ${(props) => props.theme.primary};

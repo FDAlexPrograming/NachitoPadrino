@@ -8,7 +8,7 @@ const lightTheme = {
   name: 'lightTheme',
   background: '#F7F7F7',
   color: '#2C2C2C',
-  primary: '#ffe928',
+  primary: '#FEC825',
   secondary: '#000',
   hover: '#E2E6EA',
   highlight: '#FFD700',
