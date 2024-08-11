@@ -120,8 +120,8 @@ const CardWrapper = styled.div`
 `;
 
 const Card = styled.div`
-  width: 80vw;
-  height: 100vh;
+  width: 300px;
+  height: 350px;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
