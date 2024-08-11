@@ -245,6 +245,10 @@ const PrizeItem = styled.li`
   &:hover {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const PrizeImage = styled.img`
@@ -253,6 +257,11 @@ const PrizeImage = styled.img`
   margin-right: 1rem;
   border-radius: 10px;
   object-fit: cover;
+
+  @media (max-width: 768px) {
+    width: 250px;
+    height: 150px;
+  }
 `;
 
 const PrizeDetails = styled.div`

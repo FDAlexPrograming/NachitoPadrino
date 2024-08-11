@@ -1,6 +1,7 @@
-// src/components/Gallery.js
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
 import images from '../assets'; // Importa las imágenes desde el archivo de índice
 
 // Lista de imágenes desde tus assets
@@ -27,16 +28,26 @@ const INITIAL_COUNT = 5; // Número de imágenes que se muestran inicialmente
 
 const Gallery = () => {
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
+  const [showHint, setShowHint] = useState(true);
 
   const handleShowMore = () => {
     setVisibleCount((prevCount) => Math.min(prevCount + INITIAL_COUNT, imageList.length));
+  };
+
+  const handleImageClick = () => {
+    setShowHint(false); // Oculta la indicación cuando se hace clic en la imagen
   };
 
   return (
     <div>
       <GalleryContainer>
         {imageList.slice(0, visibleCount).map((image) => (
-          <CardWrapper key={image.id}>
+          <CardWrapper key={image.id} onClick={handleImageClick}>
+            {showHint && (
+              <Hint>
+                <FontAwesomeIcon icon={faHandPointer} /> Pulsa la imagen
+              </Hint>
+            )}
             <Card>
               <Front>
                 <Image src={image.src} alt={image.alt} />
@@ -81,13 +92,35 @@ const fadeIn = keyframes`
   }
 `;
 
+const Hint = styled.div`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 0.875rem;
+  border-radius: 5px;
+  z-index: 1;
+  animation: ${fadeIn} 1s ease-in-out infinite alternate;
+
+  @media (min-width: 769px) {
+    display: none; /* Oculta la indicación en pantallas más grandes que 768px */
+  }
+
+  svg {
+    margin-right: 5px; /* Espacio entre el ícono y el texto */
+  }
+`;
+
 const CardWrapper = styled.div`
   perspective: 1000px; /* Controla el efecto de perspectiva */
   animation: ${fadeIn} 0.5s ease-in-out;
+  position: relative;
 `;
 
 const Card = styled.div`
-  width: 250px;
+  width: 300px;
   height: 350px;
   position: relative;
   transform-style: preserve-3d;
