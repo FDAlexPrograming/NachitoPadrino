@@ -1,7 +1,7 @@
 // src/components/Footer.js
 import React from 'react';
 import styled from 'styled-components';
-import { FaInstagram, FaFacebook, FaTwitter } from 'react-icons/fa'; // Importa íconos adicionales si es necesario
+import { FaInstagram } from 'react-icons/fa'; // Importa íconos adicionales si es necesario
 
 const Footer = () => {
   return (
@@ -11,16 +11,12 @@ const Footer = () => {
         <SocialMediaSection>
           <SocialMediaTitle>Nuestras Redes Sociales</SocialMediaTitle>
           <SocialMediaContainer>
-            <SocialMediaLink href="https://www.instagram.com/tu_perfil" target="_blank" rel="noopener noreferrer">
+            <SocialMediaLink href="https://www.instagram.com/nachitopadrino" target="_blank" rel="noopener noreferrer" title='Nachito Padrino'>
               <FaInstagram />
             </SocialMediaLink>
-            <SocialMediaLink href="https://www.facebook.com/tu_perfil" target="_blank" rel="noopener noreferrer">
-              <FaFacebook />
-            </SocialMediaLink>
-            <SocialMediaLink href="https://twitter.com/tu_perfil" target="_blank" rel="noopener noreferrer">
-              <FaTwitter />
-            </SocialMediaLink>
-            {/* Agrega más enlaces a otras redes sociales aquí */}
+            <SocialMediaLinkPacifico href="https://www.instagram.com/pacificofelino" target="_blank" rel="noopener noreferrer" title='Pacífico Felino' >
+              <FaInstagram />
+            </SocialMediaLinkPacifico>
           </SocialMediaContainer>
         </SocialMediaSection>
       </FooterContent>
@@ -71,6 +67,16 @@ const SocialMediaLink = styled.a`
 
   &:hover {
     color: ${(props) => props.theme.hover_nv};
+  }
+`;
+
+const SocialMediaLinkPacifico = styled.a`
+  color: ${(props) => props.theme.color};
+  font-size: 1.5rem;
+  text-decoration: none;
+
+  &:hover {
+    color: green};
   }
 `;
 
