@@ -1,6 +1,7 @@
 // src/ThemeContext.js
 import React, { createContext, useState, useContext } from 'react';
 import { ThemeProvider as StyledThemeProvider, createGlobalStyle } from 'styled-components';
+import Pacifico from './components/Pacifico';
 
 const ThemeContext = createContext();
 
@@ -15,6 +16,7 @@ const lightTheme = {
   blanco_negro: '#fff',
   negro_blanco: '#000',
   hover_nv: '#F8CA21',
+  pacifico: 'green'
 };
 
 const darkTheme = {
@@ -28,6 +30,7 @@ const darkTheme = {
   blanco_negro: '#000',
   negro_blanco: '#fff',
   hover_nv: '#F8CA21',
+  pacifico: 'green'
 };
 
 const GlobalStyle = createGlobalStyle`

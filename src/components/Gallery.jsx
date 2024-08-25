@@ -181,13 +181,14 @@ const ShowMoreButton = styled.button`
   color: ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.primary};
   border: none;
+  font-weight: 600;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out, transform 0.3s;
 
   &:hover {
     background-color: ${(props) => props.theme.secondary};
-    color: #fff;
+    color: ${(props) => props.theme.blanco_negro};
   }
 
   &:active {

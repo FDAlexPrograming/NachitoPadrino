@@ -64,20 +64,15 @@ const SocialMediaLink = styled.a`
   color: ${(props) => props.theme.color};
   font-size: 1.5rem;
   text-decoration: none;
+  color: ${(props) => props.theme.hover_nv};
 
-  &:hover {
-    color: ${(props) => props.theme.hover_nv};
-  }
 `;
 
 const SocialMediaLinkPacifico = styled.a`
   color: ${(props) => props.theme.color};
   font-size: 1.5rem;
   text-decoration: none;
-
-  &:hover {
-    color: green};
-  }
+  color: green;
 `;
 
 export default Footer;
