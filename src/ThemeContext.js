@@ -1,7 +1,6 @@
 // src/ThemeContext.js
 import React, { createContext, useState, useContext } from 'react';
 import { ThemeProvider as StyledThemeProvider, createGlobalStyle } from 'styled-components';
-import Pacifico from './components/Pacifico';
 
 const ThemeContext = createContext();
 
