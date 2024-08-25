@@ -9,9 +9,9 @@ const CustomToggle = ({ children, eventKey }) => {
   const decoratedOnClick = useAccordionButton(eventKey);
 
   return (
-    <Card.Header onClick={decoratedOnClick} style={{ cursor: 'pointer' }}>
+    <CardHeader onClick={decoratedOnClick}>
       {children}
-    </Card.Header>
+    </CardHeader>
   );
 };
 
@@ -27,16 +27,16 @@ const Home = () => {
             <p>Trabajamos para mejorar la vida de los gatos en nuestra comunidad.</p>
           </HeroSection>
           <ContentSection>
-            <Card>
+            <StyledCard>
               <Card.Body>
                 <Card.Title>Sobre Nosotros</Card.Title>
                 <Card.Text>
                   Somos una organización dedicada a rescatar, cuidar y encontrar hogares para gatos necesitados.
                 </Card.Text>
               </Card.Body>
-            </Card>
+            </StyledCard>
             <Accordion alwaysOpen>
-              <Card>
+              <StyledCard>
                 <CustomToggle eventKey="0">Nuestros Servicios</CustomToggle>
                 <Accordion.Collapse eventKey="0">
                   <Card.Body>
@@ -48,8 +48,8 @@ const Home = () => {
                     </ul>
                   </Card.Body>
                 </Accordion.Collapse>
-              </Card>
-              <Card>
+              </StyledCard>
+              <StyledCard>
                 <CustomToggle eventKey="1">Próximos Eventos</CustomToggle>
                 <Accordion.Collapse eventKey="1">
                   <Card.Body>
@@ -60,8 +60,8 @@ const Home = () => {
                     </ul>
                   </Card.Body>
                 </Accordion.Collapse>
-              </Card>
-              <Card>
+              </StyledCard>
+              <StyledCard>
                 <CustomToggle eventKey="2">Testimonios</CustomToggle>
                 <Accordion.Collapse eventKey="2">
                   <Card.Body>
@@ -75,30 +75,30 @@ const Home = () => {
                     </blockquote>
                   </Card.Body>
                 </Accordion.Collapse>
-              </Card>
-              <Card>
+              </StyledCard>
+              <StyledCard>
                 <CustomToggle eventKey="3">Cómo Ayudar</CustomToggle>
                 <Accordion.Collapse eventKey="3">
                   <Card.Body>
                     <p>Puedes ayudarnos de varias formas, como voluntario, donando suministros o realizando una donación monetaria.</p>
                   </Card.Body>
                 </Accordion.Collapse>
-              </Card>
+              </StyledCard>
             </Accordion>
           </ContentSection>
         </MainContent>
         <Sidebar>
           <h2>Apadrinados</h2>
-          <StyledCarousel>
+          <StyledCarousel interval={3000}>
             <Carousel.Item>
               <img
                 className="d-block w-100"
                 src={images.oliva1}
                 alt="First slide"
               />
-              <Carousel.Caption>
+              <CarouselCaption>
                 <h3>Gato 1</h3>
-              </Carousel.Caption>
+              </CarouselCaption>
             </Carousel.Item>
             <Carousel.Item>
               <img
@@ -106,9 +106,9 @@ const Home = () => {
                 src={images.oliva1}
                 alt="Second slide"
               />
-              <Carousel.Caption>
+              <CarouselCaption>
                 <h3>Gato 2</h3>
-              </Carousel.Caption>
+              </CarouselCaption>
             </Carousel.Item>
           </StyledCarousel>
         </Sidebar>
@@ -123,8 +123,8 @@ const BackgroundContainer = styled.div`
   background-repeat: no-repeat;
   background-position: -35rem top;
   background-blend-mode: overlay;
-   @media (max-width: 768px) {
-   background-position: -15rem top;
+  @media (max-width: 768px) {
+    background-position: -15rem top;
   }
 `;
 
@@ -148,6 +148,8 @@ const Sidebar = styled.div`
   flex: 1;
   margin-left: 2rem;
   transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  height: 55vh;
 
   @media (max-width: 768px) {
     margin-left: 0;
@@ -157,25 +159,30 @@ const Sidebar = styled.div`
 
   h2 {
     margin-bottom: 2rem;
+    font-size: 1.75rem;
+    color: ${(props) => props.theme.secondary};
   }
 
-  h3 {
-    background: #444;
-    border-radius: 50px;
-  }
 `;
 
 const StyledCarousel = styled(Carousel)`
   border-radius: 10px;
   overflow: hidden;
-  transition: 0.3s;
-
-  &:hover {
-    box-shadow: 0px 1px 4px 0px #000;
-  }
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 
   .carousel-item img {
     border-radius: 10px;
+    margin: 0 auto;
+    display: block;
+    padding: 10px
+  }
+
+  .carousel-control-prev, .carousel-control-next {
+    display: none;
+  }
+
+  .carousel-item-next, .carousel-item-prev, .carousel-item.active {
+    transition: transform 1s ease-in-out;
   }
 `;
 
@@ -194,6 +201,7 @@ const HeroSection = styled.section`
   h1 {
     font-size: 2.5rem;
     color: ${(props) => props.theme.secondary};
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 
     @media (max-width: 768px) {
       font-size: 2rem;
@@ -203,6 +211,7 @@ const HeroSection = styled.section`
   p {
     font-size: 1.2rem;
     color: ${(props) => props.theme.color};
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 
     @media (max-width: 768px) {
       font-size: 1rem;
@@ -216,6 +225,9 @@ const ContentSection = styled.section`
 
   .card {
     margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 10px;
   }
 
   .accordion {
@@ -227,9 +239,38 @@ const ContentSection = styled.section`
   }
 `;
 
+const StyledCard = styled(Card)`
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;
+
+const CardHeader = styled(Card.Header)`
+  background-color: ${(props) => props.theme.primary};
+  color:  ${(props) => props.theme.negro_blanco};
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  border: none;
+
+  &:hover {
+    background-color: ${(props) => props.theme.secondary};
+     color:  ${(props) => props.theme.blanco_negro};
+  }
+`;
+
 const Highlight = styled.span`
-  color: ${(props) => props.theme.secondary};
+  color: ${(props) => props.theme.negro_blanco};
   font-weight: bold;
+`;
+
+const CarouselCaption = styled(Carousel.Caption)`
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
 `;
 
 export default Home;

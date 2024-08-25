@@ -10,14 +10,14 @@ const DonationForm = () => {
       <Section>
         <Title>Donaciones para los michis de Pacífico</Title>
         <SectionPacifico>
-        <QRContainer>
-          <QRImage src={barnabas} alt="Código QR para donaciones por cuenta DNI" />
-        </QRContainer>
-        <QRContainer>
-          <QRImage src={qrCode1} alt="Código QR para donaciones por cuenta DNI" />
-        </QRContainer>
+          <QRContainer>
+            <QRImage src={barnabas} alt="Barnabas" />
+          </QRContainer>
+          <QRContainer>
+            <QRImage src={qrCode1} alt="Código QR para donaciones por CUENTA DNI" />
+          </QRContainer>
         </SectionPacifico>
-        <Text>Si querés darle una patita a Barni, Fiona y los michis de la colonia de Pacífico, podés hacerlo escaneando el código QR con <Highlight>cuenta DNI</Highlight>.</Text>
+        <Text>Si querés darle una patita a Barni, Fiona y los michis de la colonia de Pacífico, podés hacerlo escaneando el código QR con <Highlight>CUENTA DNI</Highlight>.</Text>
         <Text>
           O al siguiente alias: <Highlight> <br /> nachitopadrinobb <br /> (Alex Farias Dos Santos)</Highlight>
         </Text>
@@ -31,7 +31,6 @@ const DonationForm = () => {
         <Text>
           Si querés darle una patita a Pepe, podés hacerlo al siguiente alias: <Highlight> <br /> nachitopadrino <br /> (Lucía Belén Astradas)</Highlight>
         </Text>
-
       </Section>
     </Container>
   );
@@ -50,6 +49,7 @@ const Container = styled.div`
   width: 100%;
   align-items: stretch;
   justify-content: center;
+
   @media (max-width: 768px) {
     padding: 1.5rem;
     flex-direction: column;
@@ -64,27 +64,26 @@ const Section = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 3rem;
+  padding: 2rem;
   box-shadow: 0 0 20px rgb(0 0 0 / 12%);
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  width: 50%;
-  justify-content: flex-start;
-  &:last-child {
-    margin-bottom: 0;
+  width: 100%;
+  max-width: 600px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 1rem;
   }
-    @media (max-width: 768px) {
-      width: 100%;
-      padding: 1rem;
-    }
 `;
 
 const SectionPacifico  = styled.div`
-display: flex;
-width: 50%;
-gap: 2rem;
-justify-content: center;
-align-items: center;
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+
   @media (max-width: 768px) {
     width: 100%;
     flex-direction: column;
@@ -105,12 +104,10 @@ const Title = styled.h2`
 `;
 
 const Text = styled.p`
- 
   color: ${(props) => props.theme.color};
   
   @media (max-width: 768px) {
     font-size: 1rem;
-   
   }
 
   @media (max-width: 480px) {
@@ -120,20 +117,23 @@ const Text = styled.p`
 
 const QRContainer = styled.div`
   background-color: white;
-  align-items: flex-start;
   border-radius: 10px;
   display: flex;
   justify-content: center;
+  align-items: center;
   filter: drop-shadow(2px 4px 6px rgb(0 0 0 / 31%));
+  width: 100%;
   max-width: 250px;
- 
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+  }
 `;
 
 const QRImage = styled.img`
-  width: 250px; 
-  height: 250px; 
-  
-
+  width: 100%; 
+  height: auto; 
+  border-radius: 10px;
 `;
 
 const Highlight = styled.span`

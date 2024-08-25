@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHandPointer } from '@fortawesome/free-solid-svg-icons';
 import images from '../assets'; // Importa las imágenes desde el archivo de índice
 
-// Lista de imágenes desde tus assets
 const imageList = [
   { id: 1, src: images.oliva1, alt: 'Descripción de imagen 1' },
   { id: 2, src: images.oliva2, alt: 'Descripción de imagen 2' },
@@ -21,12 +20,11 @@ const imageList = [
   { id: 13, src: images.oliva13, alt: 'Descripción de imagen 13' },
   { id: 14, src: images.oliva14, alt: 'Descripción de imagen 14' },
   { id: 15, src: images.oliva15, alt: 'Descripción de imagen 15' },
-  // Agrega más imágenes según sea necesario
 ];
 
 const INITIAL_COUNT = 5; // Número de imágenes que se muestran inicialmente
 
-const Gallery = () => {
+const Pacifico = () => {
   const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
   const [showHint, setShowHint] = useState(true);
 
@@ -49,12 +47,12 @@ const Gallery = () => {
               </Hint>
             )}
             <Card>
-              <Front>
+              <CardFace className="front">
                 <Image src={image.src} alt={image.alt} />
-              </Front>
-              <Back>
+              </CardFace>
+              <CardFace className="back">
                 <Caption>{image.alt}</Caption>
-              </Back>
+              </CardFace>
             </Card>
           </CardWrapper>
         ))}
@@ -105,16 +103,16 @@ const Hint = styled.div`
   animation: ${fadeIn} 1s ease-in-out infinite alternate;
 
   @media (min-width: 769px) {
-    display: none; /* Oculta la indicación en pantallas más grandes que 768px */
+    display: none;
   }
 
   svg {
-    margin-right: 5px; /* Espacio entre el ícono y el texto */
+    margin-right: 5px;
   }
 `;
 
 const CardWrapper = styled.div`
-  perspective: 1000px; /* Controla el efecto de perspectiva */
+  perspective: 1000px;
   animation: ${fadeIn} 0.5s ease-in-out;
   position: relative;
 `;
@@ -124,32 +122,31 @@ const Card = styled.div`
   height: 350px;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55), box-shadow 0.5s;
   cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 
   &:hover {
-    transform: rotateY(180deg); /* Giro de 180 grados en el eje Y */
+    transform: rotateY(180deg);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   }
 `;
 
-const Front = styled.div`
+const CardFace = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-`;
-
-const Back = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  transform: rotateY(180deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
+
+  &.back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    transform: rotateY(180deg);
+  }
 `;
 
 const Image = styled.img`
@@ -157,33 +154,36 @@ const Image = styled.img`
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
+  transition: transform 0.5s ease, filter 0.5s ease;
+
+  ${Card}:hover & {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
 `;
 
 const Caption = styled.div`
   color: #fff;
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 1rem;
   padding: 20px;
-  border-radius: 10px;
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  position: relative;
-  bottom: 35px;
+  margin-top: 20px;
 `;
 
 const ShowMoreButton = styled.button`
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  color:  ${(props) => props.theme.color};
+  color: ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.primary};
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  font-weight: 600;
+  transition: background-color 0.3s ease-in-out, transform 0.3s;
 
   &:hover {
     background-color: ${(props) => props.theme.secondary};
@@ -195,4 +195,4 @@ const ShowMoreButton = styled.button`
   }
 `;
 
-export default Gallery;
+export default Pacifico;

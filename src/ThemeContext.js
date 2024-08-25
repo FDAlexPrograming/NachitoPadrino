@@ -13,6 +13,7 @@ const lightTheme = {
   hover: '#E2E6EA',
   highlight: '#FFD700',
   blanco_negro: '#fff',
+  negro_blanco: '#000',
   hover_nv: '#F8CA21',
 };
 
@@ -25,6 +26,7 @@ const darkTheme = {
   hover: '#333333',
   highlight: '#FF4081',
   blanco_negro: '#000',
+  negro_blanco: '#fff',
   hover_nv: '#F8CA21',
 };
 

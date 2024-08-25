@@ -16,8 +16,10 @@ const Navbar = () => {
     setMenuOpen(prevState => !prevState);
   };
 
+  const backgroundcolor = location.pathname === '/pacifico_felino' ? '#B1C8AC59' : '#F8CA2159';
+
   return (
-    <Nav isPacifico={location.pathname === '/pacifico_felino'}>
+    <Nav $backgroundcolor={backgroundcolor}>
       <Logo to="/">
         <BorderWrapper>
           <img src={images.nachito_logo} alt="Cat Logo" />
@@ -25,7 +27,7 @@ const Navbar = () => {
       </Logo>
     
       <NavLinks open={isMenuOpen}>
-      <CloseButton onClick={() => setMenuOpen(false)}>
+        <CloseButton onClick={() => setMenuOpen(false)}>
           <CloseIcon />
         </CloseButton>
         <NavLink to="/" onClick={() => setMenuOpen(false)}>Inicio</NavLink>
@@ -85,8 +87,7 @@ const Nav = styled.nav`
   backdrop-filter: blur(10px);
   z-index: 100;
   border-bottom: 1px solid ${(props) => props.theme.color};
-  background-color: ${(props) => 
-    props.isPacifico ? '#B1C8AC59' : '#F8CA2159'};
+  background-color: ${(props) => props.$backgroundcolor}; /* Aquí se maneja la prop personalizada */
 `;
 
 const Logo = styled(NavLink)`
@@ -120,7 +121,6 @@ const NavLinks = styled.div`
     font-weight: bold;
     margin-right: 1rem;
 
-    
     &.pacifico-link:hover {
       color: green; 
     }
