@@ -65,7 +65,7 @@ const Section = styled.div`
   flex-direction: column;
   gap: 2rem;
   padding: 2rem;
-  box-shadow: 0 0 20px rgb(0 0 0 / 12%);
+  box-shadow:${(props) => props.theme.box_shadow};
   justify-content: space-between;
   align-items: center;
   width: 100%;

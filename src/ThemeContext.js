@@ -15,7 +15,8 @@ const lightTheme = {
   blanco_negro: '#fff',
   negro_blanco: '#000',
   hover_nv: '#F8CA21',
-  pacifico: 'green'
+  pacifico: 'green',
+  box_shadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
 };
 
 const darkTheme = {
@@ -29,7 +30,8 @@ const darkTheme = {
   blanco_negro: '#000',
   negro_blanco: '#fff',
   hover_nv: '#F8CA21',
-  pacifico: 'green'
+  pacifico: 'green',
+  box_shadow: 'rgb(0 0 0) 0px 4px 15px'
 };
 
 const GlobalStyle = createGlobalStyle`

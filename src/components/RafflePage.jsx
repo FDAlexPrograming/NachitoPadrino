@@ -237,7 +237,7 @@ const PrizeItem = styled.li`
   max-width: 800px;
   background-color: ${(props) => props.theme.background_light};
   border-radius: 10px;
-  box-shadow: 0 0 20px rgb(0 0 0 / 12%);
+  box-shadow:${(props) => props.theme.box_shadow};
   padding: 1rem;
   cursor: pointer;
   transition: box-shadow 0.3s ease;
@@ -315,7 +315,7 @@ const Testimonial = styled.div`
   border-radius: 10px;
   padding: 1rem;
   margin-bottom: 1rem;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  box-shadow:${(props) => props.theme.box_shadow};
 `;
 
 const TestimonialText = styled.p`

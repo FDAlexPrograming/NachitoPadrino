@@ -148,7 +148,7 @@ const Sidebar = styled.div`
   flex: 1;
   margin-left: 2rem;
   transition: 0.3s;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow:${(props) => props.theme.box_shadow};
   height: 55vh;
 
   @media (max-width: 768px) {
