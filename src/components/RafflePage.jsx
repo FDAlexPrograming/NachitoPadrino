@@ -237,13 +237,13 @@ const PrizeItem = styled.li`
   max-width: 800px;
   background-color: ${(props) => props.theme.background_light};
   border-radius: 10px;
-  box-shadow:${(props) => props.theme.box_shadow};
+  box-shadow: 0 0 4px 0px rgb(0 0 0 / 15%);
   padding: 1rem;
   cursor: pointer;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow .3s;
 
   &:hover {
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 15px 1px rgb(0 0 0 / 15%);
   }
 
   @media (max-width: 768px) {
