@@ -1,30 +1,11 @@
 // src/RafflePage.js
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import iPadProImage from '../assets/oliva.png';
 import amazonGiftCardImage from '../assets/oliva.png';
 import petBasketImage from '../assets/oliva.png';
 
-// Componente del Modal
-const Modal = ({ isOpen, onClose, prize }) => {
-  if (!isOpen) return null;
-
-  return (
-    <ModalOverlay onClick={onClose}>
-      <ModalContent onClick={(e) => e.stopPropagation()}>
-        <ModalTitle>{prize.title}</ModalTitle>
-        <ModalImage src={prize.image} alt={prize.title} />
-        <ModalDescription>{prize.description}</ModalDescription>
-        <CloseButton onClick={onClose}>Cerrar</CloseButton>
-      </ModalContent>
-    </ModalOverlay>
-  );
-};
-
 const RafflePage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPrize, setSelectedPrize] = useState(null);
-
   const prizes = [
     {
       title: 'Primer Premio: iPad Pro',
@@ -41,17 +22,46 @@ const RafflePage = () => {
       image: petBasketImage,
       description: 'Una cesta llena de productos para mimar a tu gato.',
     },
+    {
+      title: 'Tercer Premio: Cesta de Productos para Mascotas',
+      image: petBasketImage,
+      description: 'Una cesta llena de productos para mimar a tu gato.',
+    },
+    {
+      title: 'Tercer Premio: Cesta de Productos para Mascotas',
+      image: petBasketImage,
+      description: 'Una cesta llena de productos para mimar a tu gato.',
+    },
+    {
+      title: 'Tercer Premio: Cesta de Productos para Mascotas',
+      image: petBasketImage,
+      description: 'Una cesta llena de productos para mimar a tu gato.',
+    },
+    {
+      title: 'Tercer Premio: Cesta de Productos para Mascotas',
+      image: petBasketImage,
+      description: 'Una cesta llena de productos para mimar a tu gato.',
+    },
   ];
 
-  const handlePrizeClick = (prize) => {
-    setSelectedPrize(prize);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedPrize(null);
-  };
+  const participants = [
+    { name: 'Ana López', number: '12345' },
+    { name: 'Luis Martínez', number: '12346' },
+    { name: 'Marta Rodríguez', number: '12347' },
+    { name: 'Marta Rodríguez', number: '12347' },
+    { name: 'Marta Rodríguez', number: '12347' },
+    { name: 'Marta Rodríguez', number: '12347' },
+    { name: 'Marta Rodríguez', number: '12347' },
+    { name: 'Marta Rodríguez', number: '12347' },
+    { name: 'Marta Rodríguez', number: '12347' },
+    { name: 'Marta Rodríguez', number: '12347' },
+    { name: 'Marta Rodríguez', number: '12347' },
+    { name: 'Marta Rodríguez', number: '12347' },
+    { name: 'Marta Rodríguez', number: '12347' },
+    { name: 'Marta Rodríguez', number: '12347' },
+    { name: 'Marta Rodríguez', number: '12347' },
+    // Agrega más participantes según sea necesario
+  ];
 
   return (
     <Container>
@@ -74,7 +84,7 @@ const RafflePage = () => {
         <Subtitle>Premios del Sorteo</Subtitle>
         <PrizeList>
           {prizes.map((prize, index) => (
-            <PrizeItem key={index} onClick={() => handlePrizeClick(prize)}>
+            <PrizeItem key={index}>
               <PrizeImage src={prize.image} alt={prize.title} />
               <PrizeDetails>
                 <PrizeTitle>{prize.title}</PrizeTitle>
@@ -117,75 +127,28 @@ const RafflePage = () => {
         </TestimonialList>
       </Section>
 
-      <Modal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        prize={selectedPrize}
-      />
+      <Section>
+        <Subtitle>Lista de Participantes</Subtitle>
+        <ParticipantList>
+          {participants.map((participant, index) => (
+            <ParticipantItem key={index}>
+              <ParticipantName>{participant.name}</ParticipantName>
+              <ParticipantNumber>{participant.number}</ParticipantNumber>
+            </ParticipantItem>
+          ))}
+        </ParticipantList>
+      </Section>
     </Container>
   );
 };
 
-// Estilos para el Modal
-const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-`;
-
-const ModalContent = styled.div`
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  max-width: 500px;
-  width: 90%;
-  text-align: center;
-`;
-
-const ModalTitle = styled.h2`
-  font-size: 1.75rem;
-  color: ${(props) => props.theme.color};
-  margin-bottom: 1rem;
-`;
-
-const ModalImage = styled.img`
-  width: 100%;
-  height: auto;
-  margin-bottom: 1rem;
-  border-radius: 10px;
-`;
-
-const ModalDescription = styled.p`
-  color: ${(props) => props.theme.color};
-  margin-bottom: 1rem;
-`;
-
-const CloseButton = styled.button`
-  padding: 0.5rem 1rem;
-  background: ${(props) => props.theme.secondary};
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-`;
-
+// Estilos
 const Container = styled.div`
   padding: 2rem;
   margin: 0 auto;
   text-align: center;
   border-radius: 10px;
-  max-width: 1200px;
 `;
-
-// Otros estilos permanecen igual
 
 const Title = styled.h1`
   font-size: 2.5rem;
@@ -222,28 +185,28 @@ const Highlight = styled.span`
 const PrizeList = styled.ul`
   list-style: none;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
   margin: 0 auto;
-  max-width: 800px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const PrizeItem = styled.li`
   display: flex;
   align-items: center;
-  margin-bottom: 2rem;
-  width: 100%;
-  max-width: 800px;
   background-color: ${(props) => props.theme.background_light};
   border-radius: 10px;
-  box-shadow: 0 0 4px 0px rgb(0 0 0 / 15%);
+  box-shadow: ${(props) => props.theme.box_shadow};
   padding: 1rem;
   cursor: pointer;
-  transition: box-shadow .3s;
+  transition: all .3s;
 
   &:hover {
-    box-shadow: 1px 1px 15px 1px rgb(0 0 0 / 15%);
+    transform: scale(1.05);
   }
 
   @media (max-width: 768px) {
@@ -314,18 +277,51 @@ const Testimonial = styled.div`
   background-color: ${(props) => props.theme.background_light};
   border-radius: 10px;
   padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow:${(props) => props.theme.box_shadow};
+  margin: 1rem 0;
+  box-shadow: ${(props) => props.theme.box_shadow};
+  text-align: center;
 `;
 
 const TestimonialText = styled.p`
   color: ${(props) => props.theme.color};
-  font-size: 1rem;
   margin-bottom: 0.5rem;
 `;
 
-const TestimonialAuthor = styled.p`
-  font-size: 0.875rem;
+const TestimonialAuthor = styled.div`
+  font-weight: bold;
+  color: ${(props) => props.theme.secondary};
+`;
+
+const ParticipantList = styled.ul`
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 10px;
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const ParticipantItem = styled.li`
+  background-color: ${(props) => props.theme.background_light};
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: ${(props) => props.theme.box_shadow};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const ParticipantName = styled.div`
+  font-size: 1rem;
+  color: ${(props) => props.theme.color};
+`;
+
+const ParticipantNumber = styled.div`
+  font-size: 1rem;
   color: ${(props) => props.theme.secondary};
 `;
 

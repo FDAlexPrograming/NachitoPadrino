@@ -166,12 +166,10 @@ const Sidebar = styled.div`
 `;
 
 const StyledCarousel = styled(Carousel)`
-  border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 
   .carousel-item img {
-    border-radius: 10px;
     margin: 0 auto;
     display: block;
     padding: 10px
@@ -227,7 +225,7 @@ const ContentSection = styled.section`
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border: none;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
   }
 
   .accordion {
@@ -241,7 +239,6 @@ const ContentSection = styled.section`
 
 const StyledCard = styled(Card)`
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
   transition: transform 0.3s ease-in-out;
 
   &:hover {
@@ -252,7 +249,6 @@ const StyledCard = styled(Card)`
 const CardHeader = styled(Card.Header)`
   background-color: ${(props) => props.theme.primary};
   color:  ${(props) => props.theme.negro_blanco};
-  border-radius: 10px;
   transition: background-color 0.3s ease;
   border: none;
 
@@ -268,9 +264,8 @@ const Highlight = styled.span`
 `;
 
 const CarouselCaption = styled(Carousel.Caption)`
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.2rem ;
 `;
 
 export default Home;
